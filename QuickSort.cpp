@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,8 +17,8 @@ void Merge(int* A, int *L, int *R, int LSize, int RSize ) {
 // Recursive function to sort an array of integers. 
 void QuickSort(int *A, int size) {
 	if (size < 2) return;
-	int *L = NULL, *R = NULL, RSize = 0, LSize = 0;
-	int *LMore = NULL, *RMore = NULL;
+	int *L = NULL, *R = NULL;
+	int RSize = 0, LSize = 0;
 	
 	for (int i = 0; i < size; i++) {
 		if (A[size - 2] < A[i]) {
@@ -30,6 +29,7 @@ void QuickSort(int *A, int size) {
 			if ((L = (int *)realloc(L, (sizeof(int) * (LSize + 1)))) != NULL) 
 				L[LSize++] = A[i];
 	}
+
 	QuickSort(L, LSize);
 	QuickSort(R, RSize);
 	Merge(A, L, R, LSize, RSize);
