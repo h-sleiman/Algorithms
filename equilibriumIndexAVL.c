@@ -18,7 +18,7 @@ node* rotate(node* subTree, int key);
 int height(node *leaf);
 int max(int num, int num1);
 int getBalance(node *leaf);
-int solution(int A[], int N);
+int equilibriumIndex(int A[], int N);
 int addSubTree(node* subTree);
 
 int main() {
