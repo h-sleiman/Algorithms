@@ -82,7 +82,7 @@ node* rotate(node* subTree, int key) {
 	}
 	else if (balance > 1) {
 		temp = subTree->right;
-		if (key > temp->key_value) {
+		if (key < temp->key_value) {
 			subTree->right = leftRotate(subTree->right);
 			subTree = rightRotate(subTree);
 		}
