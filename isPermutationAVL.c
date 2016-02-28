@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 typedef struct node {
-	int height;
 	int key_value;
 	int count;
 	struct node *left;
@@ -40,7 +39,6 @@ int main() {
 		printf("Is not permutation\n");
 	else printf("Is permutation\n");
 
-	print(tree, 0);
 	return 0;
 }
 node* leafInit(node *leaf, int key) {
@@ -49,16 +47,13 @@ node* leafInit(node *leaf, int key) {
 		leaf->key_value = key;
 		leaf->left = NULL;
 		leaf->right = NULL;
-		leaf->height = 1;
 		leaf->count = 1;
 	}
 	return leaf;
 }
 node* insert(node *leaf, int key){
-	if (leaf == NULL) {
+	if (leaf == NULL) 
 		leaf = leafInit(leaf, key);
-		leaf->height = height(leaf);
-	}
 	else if (key < leaf->key_value)
 		leaf->left = insert(leaf->left, key);
 	else if (key > leaf->key_value)
@@ -101,9 +96,6 @@ node* leftRotate(node *leaf) {
 	x->right = leaf;
 	leaf->left = y;
 
-	x->height = height(x);
-	leaf->height = height(leaf);
-
 	return x;
 }
 node* rightRotate(node *leaf) {
@@ -112,9 +104,6 @@ node* rightRotate(node *leaf) {
 
 	x->left = leaf;
 	leaf->right = y;
-
-	x->height = height(x);
-	leaf->height = height(leaf);
 
 	return x;
 }
@@ -128,16 +117,6 @@ int max(int num, int num1) {
 }
 int getBalance(node *leaf) {
 	return height(leaf->right) - height(leaf->left);
-}
-void print(node *leaf, int depth) {
-	int i;
-	if (leaf != NULL) {
-		print(leaf->right, depth + 1);
-		for (i = 0; i < depth; i++)
-			printf("\t");
-		printf("%c\n", leaf->key_value);
-		print(leaf->left, depth + 1);
-	}
 }
 int isPermutation(node* tree) {
 	if (tree != NULL) {
