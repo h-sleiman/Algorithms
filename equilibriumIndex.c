@@ -1,7 +1,5 @@
-#include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 
 /*
  * This function executes in O(2 n) in the worst case 
